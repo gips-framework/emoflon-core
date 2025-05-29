@@ -3,8 +3,7 @@
       id="org.moflon.core.feature"
       label="eMoflon::Core"
       version="1.7.0.qualifier"
-      provider-name="eMoflon developers"
-      plugin="org.moflon.core.branding">
+      provider-name="eMoflon developers">
 
    <description url="https://emoflon.org/">
       This plugin provides the core functionality of the eMoflon toolsuite.
@@ -39,42 +38,71 @@ See here for more details on EPL: https://www.eclipse.org/org/documents/epl-v10.
 
    <plugin
          id="org.moflon.core.build"
-         version="0.0.0"/>
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.moflon.core.utilities"
-         version="0.0.0"/>
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.moflon.core.preferences"
-         version="0.0.0"/>
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.moflon.emf.build"
-         version="0.0.0"/>
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.moflon.emf.codegen"
-         version="0.0.0"/>
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.moflon.core.plugins"
-         version="0.0.0"/>
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.moflon.core.propertycontainer"
-         version="0.0.0"/>
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.moflon.core.ui"
-         version="0.0.0"/>
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.moflon.emf.ui"
-         version="0.0.0"/>
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.emoflon.core.dependencies"
+         download-size="0"
+         install-size="0"
          version="0.0.0"/>
 
 </feature>
