@@ -383,8 +383,9 @@ public abstract class UnlockedResourceImpl extends NotifierImpl implements Resou
 			return id;
 		} else {
 			InternalEObject internalEObject = (InternalEObject) eObject;
-			if (internalEObject.eDirectResource() == this
-					|| unloadingContents != null && unloadingContents.contains(internalEObject)) {
+			
+			List<EObject> directContent = unloadingContents != null ? unloadingContents : getContents();			
+			if (directContent.contains(internalEObject)) {
 				return "/" + getURIFragmentRootSegment(eObject);
 			} else {
 				SegmentSequence.Builder builder = SegmentSequence.newBuilder("/");
@@ -409,8 +410,8 @@ public abstract class UnlockedResourceImpl extends NotifierImpl implements Resou
 					}
 
 					internalEObject = container;
-					if (container.eDirectResource() == this
-							|| unloadingContents != null && unloadingContents.contains(container)) {
+					directContent = unloadingContents != null ? unloadingContents : getContents();
+					if (directContent.contains(internalEObject)) {
 						isContained = true;
 						break;
 					}
