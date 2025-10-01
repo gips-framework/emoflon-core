@@ -218,6 +218,29 @@ public abstract class SmartCollection<T, L extends Collection<T>> implements ELi
 		}
 		return removeAll(removed);
 	}
+	
+	public int indexOf(Object o) {
+		Iterator<T> it = elements.iterator();
+		int index = -1;
+
+		if (o == null) {
+			while (it.hasNext()) {
+				T elt = it.next();
+				if (elt == null)
+					return index + 1;
+				index++;
+			}
+		} else {
+			while (it.hasNext()) {
+				T elt = it.next();
+				if (o.equals(elt))
+					return index + 1;
+				index++;
+			}
+		}
+
+		return index;
+	}
 
 	@Override
 	public void clear() {
