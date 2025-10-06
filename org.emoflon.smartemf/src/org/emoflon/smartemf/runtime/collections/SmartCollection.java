@@ -239,7 +239,7 @@ public abstract class SmartCollection<T, L extends Collection<T>> implements ELi
 			}
 		}
 
-		return index;
+		return -1; // not found
 	}
 
 	@Override
