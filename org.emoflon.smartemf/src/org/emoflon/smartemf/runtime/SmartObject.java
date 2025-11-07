@@ -497,13 +497,13 @@ public abstract class SmartObject implements MinimalSObjectContainer, InternalEO
 	}
 
 	@Override
-	public String eURIFragmentSegment(EStructuralFeature eFeature, EObject eObject) {
-		throw new UnsupportedOperationException("Unsupported by SmartEMF");
+	public String eURIFragmentSegment(EStructuralFeature eStructuralFeature, EObject eObject) {
+		return ObjectURIFragmentGenerator.eURIFragmentSegment(this, eStructuralFeature, eObject);
 	}
 
 	@Override
 	public EObject eObjectForURIFragmentSegment(String uriFragmentSegment) {
-		throw new UnsupportedOperationException("Unsupported by SmartEMF");
+		return ObjectURIFragmentGenerator.eObjectForURIFragmentSegment(this, uriFragmentSegment);
 	}
 
 	@Override

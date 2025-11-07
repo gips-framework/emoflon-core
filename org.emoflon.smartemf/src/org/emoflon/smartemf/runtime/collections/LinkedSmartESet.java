@@ -137,11 +137,6 @@ public class LinkedSmartESet<T> extends SmartCollection<T, LinkedHashSet<T>> {
 	}
 
 	@Override
-	public int indexOf(Object o) {
-		throw new UnsupportedOperationException("Not supported for Sets");
-	}
-
-	@Override
 	public int lastIndexOf(Object o) {
 		throw new UnsupportedOperationException("Not supported for Sets");
 	}
