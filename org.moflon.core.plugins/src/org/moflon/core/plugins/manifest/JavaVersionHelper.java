@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Objects;
 import java.util.jar.Attributes;
 import java.util.jar.JarInputStream;
 import java.util.jar.Manifest;
@@ -44,13 +45,17 @@ public class JavaVersionHelper {
 				// Running in development mode -> MANIFEST.MF can directly be read
 				final String manifestPath = helperPath + "META-INF/MANIFEST.MF";
 				final String manifestContent = Files.readString(Path.of(manifestPath));
+				Objects.requireNonNull(manifestContent);
 				final int indexContent = manifestContent.indexOf("Bundle-RequiredExecutionEnvironment: ");
+				// Special cases: find other types of line separators in MANIFEST.MF file(s)
+				String lineSeparator = getLineSeparatorFromFileContent(manifestContent);
 				final String line = manifestContent.substring(indexContent,
-						manifestContent.indexOf(System.lineSeparator(), indexContent));
+						manifestContent.indexOf(lineSeparator, indexContent));
 				javaVersion = line.substring(line.indexOf(":") + 2);
 			}
-		} catch (final IOException e) {
+		} catch (final IOException | IndexOutOfBoundsException e) {
 			// fall back solution if file could not be read
+			// fall back solution if line separator differs and parsing fails
 			javaVersion = "JavaSE-17";
 		}
 
@@ -64,6 +69,19 @@ public class JavaVersionHelper {
 	private boolean runsOnWindows() {
 		String os = System.getProperty("os.name");
 		return os.contains("win") || os.contains("Win");
+	}
+
+	private String getLineSeparatorFromFileContent(final String fileContent) {
+		Objects.requireNonNull(fileContent);
+		String lineSeparator = System.lineSeparator();
+		if (fileContent.contains("\r\n")) {
+			lineSeparator = "\r\n";
+		} else if (fileContent.contains("\n")) {
+			lineSeparator = "\n";
+		} else if (fileContent.contains("\r")) {
+			lineSeparator = "\r";
+		}
+		return lineSeparator;
 	}
 
 }
